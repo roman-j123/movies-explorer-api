@@ -24,8 +24,10 @@
   "homepage": "https://github.com/roman-j123/movies-explorer-api#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-winston": "^4.1.0",
     "mongoose": "^5.13.2",
-    "validator": "^13.6.0"
+    "validator": "^13.6.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
