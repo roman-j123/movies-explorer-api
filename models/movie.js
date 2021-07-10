@@ -1,4 +1,4 @@
-import { isURL } from 'validator';
+const validator = require('validator');
 
 const mongoose = require('mongoose');
 
@@ -25,17 +25,17 @@ const movieSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    validate: [isURL, 'Ошибка заполнения, тут должна быть ссылка'],
+    validate: [validator.isURL, 'Ошибка заполнения, тут должна быть ссылка'],
     required: true,
   },
   trailer: {
     type: String,
-    validate: [isURL, 'Ошибка заполнения, тут должна быть ссылка'],
+    validate: [validator.isURL, 'Ошибка заполнения, тут должна быть ссылка'],
     required: true,
   },
   thumbnail: {
     type: String,
-    validate: [isURL, 'Ошибка заполнения, тут должна быть ссылка'],
+    validate: [validator.isURL, 'Ошибка заполнения, тут должна быть ссылка'],
     required: true,
   },
   owner: {

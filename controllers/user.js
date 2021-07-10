@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const ValidationError = require('../errors/validationError');
+const NotFoundError = require('../errors/notFoundError');
 const ConflictError = require('../errors/conflictError');
 const AuthError = require('../errors/authError');
 
@@ -14,11 +15,32 @@ function getCurrentUser(req, res, next) {
       throw new ValidationError('Пользователь не найден');
     })
     .then((user) => {
-      res.send({user});
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
         const error = new ValidationError('Пользователь не найден');
+        next(error);
+      }
+      next(err);
+    });
+}
+function updateProfileUser(req, res, next) {
+  return User.findByIdAndUpdate(req.user._id, req.body,
+    {
+      new: true,
+      runValidators: true,
+      upsert: false,
+    })
+    .orFail(() => {
+      throw new NotFoundError('Пользователь не найден');
+    })
+    .then((user) => {
+      return res.send(user);
+    })
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        const error = new ValidationError('Переданы некорректные данные');
         next(error);
       }
       next(err);
@@ -73,6 +95,7 @@ function loginUser(req, res, next) {
 
 module.exports = {
   getCurrentUser,
+  updateProfileUser,
   createNewUser,
   loginUser,
 };
