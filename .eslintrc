@@ -3,6 +3,13 @@
   "rules": {
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "no-console": ["error", { "allow": ["log"] }],
-    "no-unused-vars": "off"
+    "linebreak-style": 0,
+    "object-curly-spacing": "off",
+    "no-unused-vars": "off",
+    "no-shadow": "off",
+    "consistent-return": "off",
+    "func-names": "off",
+    "arrow-body-style": "off",
+    "no-unused-expressions": "off",
   }
 }
