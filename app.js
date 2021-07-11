@@ -18,10 +18,10 @@ const app = express();
 app.use(helmet());
 const options = {
   origin: [
-    'https://roman-j123.nomoredomains.monster',
-    'http://roman-j123.nomoredomains.monster',
-    'https://api.nomoredomains.monster',
-    'http://api.nomoredomains.monster',
+    'https://rj123-diploma.nomoredomains.rocks',
+    'http://rj123-diploma.nomoredomains.rocks',
+    'https://api.rj123-diploma.nomoredomains.rocks',
+    'http://api.rj123-diploma.nomoredomains.rocks',
     'http://localhost:3000',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],

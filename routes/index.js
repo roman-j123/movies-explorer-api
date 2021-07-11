@@ -11,7 +11,7 @@ router.post('/signout', logoutUser);
 router.use('/users', auth, userRoute);
 router.use('/movies', auth, movieRoute);
 
-router.get('*', (req, res, next) => {
+router.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 
