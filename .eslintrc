@@ -2,14 +2,6 @@
   "extends": "airbnb-base",
   "rules": {
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "no-console": ["error", { "allow": ["log"] }],
-    "linebreak-style": 0,
-    "object-curly-spacing": "off",
-    "no-unused-vars": "off",
-    "no-shadow": "off",
-    "consistent-return": "off",
-    "func-names": "off",
-    "arrow-body-style": "off",
-    "no-unused-expressions": "off",
+    "no-console": ["error", { "allow": ["log"] }]
   }
 }

@@ -6,10 +6,12 @@ const movieSchema = new mongoose.Schema({
   country: {
     type: String,
     required: true,
+    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
   },
   director: {
     type: String,
     required: true,
+    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
   },
   duration: {
     type: Number,
@@ -22,6 +24,7 @@ const movieSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
   },
   image: {
     type: String,

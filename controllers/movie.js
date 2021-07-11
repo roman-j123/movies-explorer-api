@@ -7,7 +7,7 @@ const ConflictError = require('../errors/conflictError');
 function getAllMovies(req, res, next) {
   return Movie.find({})
     .then((movies) => {
-      return res.send({movies});
+      res.send({ movies });
     })
     .catch(next);
 }

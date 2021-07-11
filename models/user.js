@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     validate: [validator.isEmail, 'Ошибка заполнения, тут должна быть почта'],
+    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
     required: true,
     uniquie: true,
   },
@@ -18,8 +19,8 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minLength: 2,
-    maxLength: 30,
+    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
+    maxLength: [2, 'Ошибка заполнения, максимум 30 символов'],
   },
 });
 // eslint-disable-next-line func-names

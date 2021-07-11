@@ -36,7 +36,7 @@ function updateProfileUser(req, res, next) {
       throw new NotFoundError('Пользователь не найден');
     })
     .then((user) => {
-      return res.send(user);
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -87,10 +87,14 @@ function loginUser(req, res, next) {
       res.send({ token });
       return bcrypt.compare(password, user.password);
     })
-    .catch((err) => {
+    .catch(() => {
       const error = new AuthError('Неправильные почта или пароль');
       next(error);
     });
+}
+function logoutUser(req, res) {
+  res.clearCookie('jwt');
+  res.redirect('/');
 }
 
 module.exports = {
@@ -98,4 +102,5 @@ module.exports = {
   updateProfileUser,
   createNewUser,
   loginUser,
+  logoutUser,
 };
