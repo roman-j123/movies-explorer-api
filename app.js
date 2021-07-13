@@ -12,6 +12,7 @@ const handleError = require('./middlewares/handleError');
 const limiter = require('./middlewares/ratelimit');
 
 const router = require('./routes/index');
+const auth = require('./middlewares/auth');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -45,7 +46,7 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 app.use(limiter);
-app.use('/', router);
+app.use('/', auth, router);
 
 app.use(errors());
 app.use(handleError);
