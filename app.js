@@ -13,7 +13,7 @@ const limiter = require('./middlewares/ratelimit');
 
 const router = require('./routes/index');
 
-const { PORT = 3000 } = process.env;
+const { DATABASE, NODE_ENV, PORT = 3000 } = process.env;
 const app = express();
 app.use(helmet());
 const options = {
@@ -31,7 +31,7 @@ const options = {
   credentials: true,
 };
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect(NODE_ENV === 'production' ? DATABASE : 'mongodb://localhost:27017/bitfilmsdb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: true,
