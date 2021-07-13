@@ -41,7 +41,7 @@ function createMovie(req, res, next) {
     });
 }
 function deleteMovie(req, res, next) {
-  return Movie.findById(req.params.movieId)
+  return Movie.findByIdAndRemove(req.params.movieId)
     .orFail(() => {
       throw new NotFoundError('Фильм не найден');
     })
@@ -49,7 +49,7 @@ function deleteMovie(req, res, next) {
       if (!movie.owner.equals(req.user._id)) {
         throw new ForbiddenError('Вы не можете удалять фильмы других пользователей');
       }
-      movie.remove();
+      res.send(movie);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
