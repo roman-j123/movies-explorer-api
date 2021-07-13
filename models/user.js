@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
-    maxLength: [2, 'Ошибка заполнения, максимум 30 символов'],
+    maxLength: [30, 'Ошибка заполнения, максимум 30 символов'],
   },
 });
 // eslint-disable-next-line func-names
