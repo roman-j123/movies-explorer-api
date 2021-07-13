@@ -6,8 +6,8 @@ const AuthError = require('../errors/authError');
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    validate: [validator.isEmail, 'Ошибка заполнения, тут должна быть почта'],
-    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
+    validate: [validator.isEmail, 'Проверьте написание почты'],
+    minLength: [2, 'Минимум 2 символа'],
     required: true,
     uniquie: true,
   },
@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minLength: [2, 'Ошибка заполнения, минимум 2 символа'],
-    maxLength: [30, 'Ошибка заполнения, максимум 30 символов'],
+    minLength: [2, 'Минимум 2 символа'],
+    maxLength: [30, 'Максимум 30 символов'],
   },
 });
 // eslint-disable-next-line func-names

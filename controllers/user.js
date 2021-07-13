@@ -58,6 +58,7 @@ function createNewUser(req, res, next) {
       email: user.email,
     }))
     .catch((err) => {
+      console.log(err);
       if (err.name === 'ValidationError') {
         const error = new ValidationError('Переданы некорректные данные');
         next(error);
